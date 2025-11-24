@@ -1,0 +1,4 @@
+Model_Name,WER,CER,Combined_Score,timestamp
+MALIBA-AI/bambara-whisper-base,0.2264,0.1094,0.1679,2025-03-15 10:30:45
+OpenAI/whisper-large-v3,0.3264,0.1594,0.2429,2025-03-15 10:30:45
+Meta/seamless-m4t-v2,0.4156,0.2134,0.3149,2025-03-15 10:30:45
