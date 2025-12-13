@@ -15,34 +15,34 @@ from utils.utils_functions import (
     get_model_performance_table,
     compare_models,
     process_submission,
-    create_main_leaderboard
+    create_main_leaderboard,
+    get_weight_description
 )
 import os
 from settings.models import Settings
 from assets.styles.themes import (
     get_logo_html,
-    header_html ,
+    header_html,
     style_css
 )
-
 import pandas as pd
 
 config = Settings()
 
 run_command(["git", "config", "--global", "user.email", config.github_email])
 run_command(["git", "config", "--global", "user.name", "HF Space"])
+
 remote_url = f"https://{config.github_user}:{config.github_token}@github.com/{config.github_repo}.git"
-run_command(["git", "remote", "set-url", "--push", "origin", remote_url], check=True, capture_output=True)  
+run_command(["git", "remote", "set-url", "--push", "origin", remote_url], check=True, capture_output=True)
+
 git_pull()
 
 references = load_references()
-
 leaderboard_file = config.leaderboard_file
 logo_path = config.logo_path
 
 if not os.path.exists(leaderboard_file):
     raise ValueError("No file found the for the leaderboard")
-
 
 current_data = get_current_leaderboard()
 MODEL_NAME_LIST = sorted(current_data['Model_Name'].unique()) if len(current_data) > 0 else []
@@ -64,6 +64,7 @@ with gr.Blocks(theme=gr.themes.Default(), title="Bambara ASR Benchmark Leaderboa
         
         if len(current_data) > 0:
             best_model = current_data.sort_values("Combined_Score").iloc[0]
+            license_info = best_model.get('License', 'Unknown')
             gr.Markdown(f"""
             <div class="best-model-card">
             
@@ -71,15 +72,79 @@ with gr.Blocks(theme=gr.themes.Default(), title="Bambara ASR Benchmark Leaderboa
             * WER: **{best_model['WER']*100:.2f}%**
             * CER: **{best_model['CER']*100:.2f}%**
             * Combined Score: **{best_model['Combined_Score']*100:.2f}%**
+            * License: **{license_info}**
             </div>
             """)
-
     
         with gr.Tabs() as tabs:
             with gr.Tab("Main Leaderboard", id="main"):
                 gr.HTML("<br><br><center><h2 style='color: #000000;'>Main Leaderboard</h2></center><br>")
-                main_leaderboard = create_main_leaderboard()
-                gr.HTML(df_to_html(main_leaderboard))
+                
+                gr.Markdown("""
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #7d3561;">
+                    <strong>📊 Custom Ranking Weights</strong><br>
+                    <span style="color: #666;">Adjust the sliders below to rank models based on your preference. 
+                    For example, set WER to 100% and CER to 0% if you only care about Word Error Rate.</span>
+                </div>
+                """)
+                
+                with gr.Row():
+                    wer_weight_slider = gr.Slider(
+                        minimum=0,
+                        maximum=100,
+                        value=70,
+                        step=5,
+                        label="WER Weight (%)",
+                        info="Weight for Word Error Rate"
+                    )
+                    cer_weight_slider = gr.Slider(
+                        minimum=0,
+                        maximum=100,
+                        value=30,
+                        step=5,
+                        label="CER Weight (%)",
+                        info="Weight for Character Error Rate"
+                    )
+                
+                weight_description = gr.Markdown(
+                    value=get_weight_description(70, 30),
+                    elem_classes="weight-description"
+                )
+                
+                update_ranking_btn = gr.Button("🔄 Update Ranking", variant="primary")
+                
+                main_leaderboard_html = gr.HTML(df_to_html(create_main_leaderboard(70, 30)))
+                
+                def update_leaderboard_with_weights(wer_w, cer_w):
+                    description = get_weight_description(wer_w, cer_w)
+                    leaderboard = create_main_leaderboard(wer_w, cer_w)
+                    return description, df_to_html(leaderboard)
+                
+                update_ranking_btn.click(
+                    fn=update_leaderboard_with_weights,
+                    inputs=[wer_weight_slider, cer_weight_slider],
+                    outputs=[weight_description, main_leaderboard_html]
+                )
+                
+                wer_weight_slider.change(
+                    fn=lambda w, c: get_weight_description(w, c),
+                    inputs=[wer_weight_slider, cer_weight_slider],
+                    outputs=[weight_description]
+                )
+                cer_weight_slider.change(
+                    fn=lambda w, c: get_weight_description(w, c),
+                    inputs=[wer_weight_slider, cer_weight_slider],
+                    outputs=[weight_description]
+                )
+                
+                gr.Markdown("""
+                <div style="margin-top: 20px; padding: 10px; background: #e9ecef; border-radius: 8px;">
+                    <strong>Legend:</strong><br>
+                    🏆 = 1st Place | 🥈 = 2nd Place | 🥉 = 3rd Place<br>
+                    <span style="background-color: #28a745; color: white; padding: 2px 6px; border-radius: 3px; font-size: 11px;">Open Source</span> = Model available on HuggingFace (click name to visit) | 
+                    <span style="background-color: #dc3545; color: white; padding: 2px 6px; border-radius: 3px; font-size: 11px;">Proprietary</span> = Closed source model
+                </div>
+                """)
         
             with gr.Tab("Model-Specific Performance", id="models", elem_id="model_specific_table"):
                 gr.HTML("<br><br><center><h2>Model-Specific Performance</h2></center><br>")
@@ -165,18 +230,57 @@ with gr.Blocks(theme=gr.themes.Default(), title="Bambara ASR Benchmark Leaderboa
                 with gr.Row():
                     model_name_input = gr.Textbox(
                         label="Model Name",
-                        placeholder="e.g., MALIBA-AI/bambara-whisper-large"
+                        placeholder="e.g., MALIBA-AI/bambara-whisper-large",
+                        info="Use a descriptive name to identify your model"
                     )
-                    gr.Markdown("*Use a descriptive name to identify your model*")
-            
+                
+                gr.Markdown("### 📜 Model License Information")
+                gr.Markdown(
+                    """
+                    <div style="background: #fff3cd; padding: 10px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid #ffc107;">
+                        <strong>⚠️ Important:</strong> If your model is <strong>Open Source</strong>, you must provide a valid HuggingFace URL. 
+                        The model name will be displayed as a clickable link to your model repository.
+                    </div>
+                    """
+                )
+                
+                with gr.Row():
+                    license_type_input = gr.Radio(
+                        choices=["Open Source", "Proprietary"],
+                        label="License Type",
+                        value="Open Source",
+                        info="Select the license type for your model"
+                    )
+                
+                with gr.Row():
+                    model_url_input = gr.Textbox(
+                        label="HuggingFace Model URL",
+                        placeholder="https://huggingface.co/your-org/your-model",
+                        info="Required for Open Source models. Must be a valid HuggingFace URL.",
+                        visible=True
+                    )
+                
+                def toggle_url_visibility(license_type):
+                    if license_type == "Open Source":
+                        return gr.update(visible=True, info="Required for Open Source models. Must be a valid HuggingFace URL.")
+                    else:
+                        return gr.update(visible=True, info="Optional for Proprietary models.")
+                
+                license_type_input.change(
+                    fn=toggle_url_visibility,
+                    inputs=[license_type_input],
+                    outputs=[model_url_input]
+                )
+                
+                gr.Markdown("### 📁 Prediction File")
                 with gr.Row():
                     csv_upload = gr.File(
                         label="Upload CSV File",
                         file_types=[".csv"]
                     )
                     gr.Markdown("*CSV with columns: id, text*")
-                
-                submit_btn = gr.Button("Submit", variant="primary")
+                    
+                submit_btn = gr.Button("🚀 Submit", variant="primary")
                 output_msg = gr.Textbox(label="Status", interactive=False)
             
                 submission_leaderboard_display = gr.HTML(
@@ -184,12 +288,12 @@ with gr.Blocks(theme=gr.themes.Default(), title="Bambara ASR Benchmark Leaderboa
                     label="Updated Leaderboard"
                 )
             
-                def process_submission_wrapper(model_name, csv_file):
-                    return process_submission(model_name, csv_file, references)
+                def process_submission_wrapper(model_name, csv_file, license_type, model_url):
+                    return process_submission(model_name, csv_file, references, license_type, model_url)
                 
                 submit_btn.click(
                     fn=process_submission_wrapper,
-                    inputs=[model_name_input, csv_upload],
+                    inputs=[model_name_input, csv_upload, license_type_input, model_url_input],
                     outputs=[output_msg, submission_leaderboard_display]
                 )
         
@@ -224,9 +328,10 @@ with gr.Blocks(theme=gr.themes.Default(), title="Bambara ASR Benchmark Leaderboa
                     * Particularly useful for morphologically rich languages like Bambara
                 
                     **Combined Score**
-                    * Weighted combination: 70% WER + 30% CER
-                    * Provides balanced evaluation considering both word and character accuracy
-                    * Used as the primary ranking metric
+                    * Default weighted combination: 70% WER + 30% CER
+                    * **NEW:** You can now customize the weights in the Main Leaderboard tab!
+                    * Set your own preference (e.g., 100% WER + 0% CER if you only care about WER)
+                    * Provides flexible evaluation based on your specific needs
                 
                     ### How to Submit Results
                 
@@ -241,7 +346,10 @@ with gr.Blocks(theme=gr.themes.Default(), title="Bambara ASR Benchmark Leaderboa
                     ...
                     ```
                     
-                    4. **Submit your results** using the "Submit New Results" tab
+                    4. **Specify your model's license:**
+                       - **Open Source:** Provide a HuggingFace URL (model name becomes a link)
+                       - **Proprietary:** No URL required
+                    5. **Submit your results** using the "Submit New Results" tab
                 
                     ### Evaluation Guidelines
                 
