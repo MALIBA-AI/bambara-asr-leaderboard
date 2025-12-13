@@ -268,11 +268,11 @@ def compare_models(model_1_name, model_2_name):
     def format_diff(val1, val2):
         diff = val1 - val2
         if abs(diff) < 0.001:
-            return f"{diff:.3f}"
+            return f'<span style="color: #212529 !important;">{diff:.3f}</span>'
         elif diff > 0:
-            return f"<span style='color:red; font-weight:bold;'>+{diff:.3f}</span>"
+            return f'<span style="color: #dc3545 !important; font-weight: bold !important;">+{diff:.3f}</span>'
         else:
-            return f"<span style='color:green; font-weight:bold;'>{diff:.3f}</span>"
+            return f'<span style="color: #28a745 !important; font-weight: bold !important;">{diff:.3f}</span>'
     
     comparison_data = [
         ["ASR Performance", "Word Error Rate (WER)", f"{m1['WER']:.3f}", f"{m2['WER']:.3f}", format_diff(m1['WER'], m2['WER'])],
@@ -295,6 +295,7 @@ def process_submission(model_name, csv_file, references, license_type="Unknown",
     if not csv_file:
         return "Error: Please upload a CSV file.", None
     
+ 
     if license_type == "Open Source" and (not model_url or not model_url.strip()):
         return "Error: Please provide a HuggingFace model URL for open source models.", None
     
@@ -389,7 +390,7 @@ def create_main_leaderboard(wer_weight=70, cer_weight=30):
     
     display_df = display_df.sort_values("Custom_Score", ascending=True).reset_index(drop=True)
     
-    display_df["Model_Name_Display"] = display_df.apply(
+    display_df["Model_Name"] = display_df.apply(
         lambda row: format_model_name_with_link(
             row["Model_Name"],
             row.get("License", "Unknown"),
@@ -414,12 +415,11 @@ def create_main_leaderboard(wer_weight=70, cer_weight=30):
         else:
             return '<span style="background-color: #6c757d; color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px;">Unknown</span>'
     
-    display_df["License_Display"] = display_df["License"].apply(format_license)
+    display_df["License"] = display_df["License"].apply(format_license)
     
     display_df = display_df.rename(columns={
         "Model_Name": "Model Name",
-        "timestamp": "Timestamp",
-        "License_Display": "License"
+        "timestamp": "Timestamp"
     })
     
     final_cols = ["Model Name", "WER (%)", "CER (%)", "Combined Score (%)", "License", "Timestamp"]

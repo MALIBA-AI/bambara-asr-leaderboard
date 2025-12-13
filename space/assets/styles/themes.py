@@ -261,7 +261,7 @@ div[class*="gradio-container"] .prose tbody tr:last-child {
 
 div[class*="gradio-container"] .prose td {
     padding: 14px 12px !important;
-    color: #212529 !important;
+    color: #212529;
     font-size: 14px !important;
     border: none !important;
     text-align: center !important;
@@ -307,6 +307,23 @@ div[class*="gradio-container"] .prose td:first-child {
 #models_comparison_table .prose td:first-child {
     width: 150px !important;
     text-align: left !important;
+}
+
+/* Override td color for comparison table to allow inline span colors */
+#models_comparison_table .prose td {
+    color: #212529;
+}
+
+/* Green text for negative differences (Model 1 better) */
+#models_comparison_table .prose td span[style*="28a745"] {
+    color: #28a745 !important;
+    font-weight: bold !important;
+}
+
+/* Red text for positive differences (Model 2 better) */
+#models_comparison_table .prose td span[style*="dc3545"] {
+    color: #dc3545 !important;
+    font-weight: bold !important;
 }
 
 /* ============================================
