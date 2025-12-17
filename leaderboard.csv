@@ -14,7 +14,7 @@ facebook/mms-1b-all,0.6105655999290758,0.1470527002906157,0.4715117300375377,202
 sudoping01/bambara-asr-v2,0.6032985461720093,0.1746372267625773,0.4747001503491797,2025-12-13 22:17:21,Open Source,https://huggingface.co/sudoping01/bambara-asr-v2
 MALIBA-AI/bambara-asr-v2,0.6173653208382153,0.1790366372384802,0.4858667157582947,2025-12-14 03:25:54,Open Source,https://huggingface.co/MALIBA-AI/bambara-asr-v2
 MALIBA-AI/bambara-asr-v1,0.6173653208382153,0.1790366372384802,0.4858667157582947,2025-12-13 22:22:44,Open Source,https://huggingface.co/MALIBA-AI/bambara-asr-v1
-Panga-Azazia-bambara-asr-v1.1-0,0.6039162206667842,0.2259740375061008,0.49053356571857915,2025-12-15 12:04:02,Proprietary,https://huggingface.co/Panga-Azazia/bambara-asr-v1.1
+Panga-Azazia-bambara-asr-v1.1-0,0.6039162206667842,0.2259740375061008,0.4905335657185791,2025-12-15 12:04:02,Proprietary,https://huggingface.co/Panga-Azazia/bambara-asr-v1.1
 RobotsMali/soloni-114m-tdt-ctc-v1,0.6113608146453282,0.2769386766060071,0.5110341732335318,2025-12-13 22:50:28,Open Source,https://huggingface.co/RobotsMali/soloni-114m-tdt-ctc-v1
 RobotsMali/stt-bm-quartznet15x5-v2,0.6566144780117574,0.1897525711037545,0.5165559059393565,2025-12-13 22:43:12,Open Source,https://huggingface.co/RobotsMali/stt-bm-quartznet15x5-v2
 RobotsMali-soloba-ctc-0.6b-v0,0.6293194324844291,0.3047668458335033,0.5319536564891514,2025-12-15 11:54:55,Open Source,https://huggingface.co/RobotsMali/soloba-ctc-0.6b-v0
@@ -24,6 +24,7 @@ RobotsMali/stt-bm-quartznet15x5-v1,0.7298366167398486,0.2175467643938228,0.57614
 RobotsMali/stt-bm-quartznet15x5-v0,0.7582149959156989,0.2523083770898077,0.6064430102679315,2025-12-13 22:44:55,Open Source,https://huggingface.co/RobotsMali/stt-bm-quartznet15x5-v0
 sudoping01/maliba-asr-v0,0.9485644265541816,0.7171508663670738,0.8791403584980492,2025-12-14 03:43:28,Open Source,https://huggingface.co/sudoping01/maliba-asr-v0
 openai/whisper-large-v2,1.0683651893274848,0.6079931256704183,0.9302535702303648,2025-12-13 21:51:48,Open Source,https://huggingface.co/openai/whisper-large-v2
+nvidia/canary-1b-v2,1.1164366857594674,0.6054606208551805,0.9631438662881813,2025-12-17 18:53:59,Open Source,https://huggingface.co/nvidia/canary-1b-v2
 openai/whisper-tiny,1.1272441834552402,0.6660586481884937,0.9888885228752162,2025-12-14 13:25:23,Open Source,https://huggingface.co/openai/whisper-tiny
 openai/whisper-small,1.0997489363812245,0.7583874240844245,0.9973404826921844,2025-12-14 13:26:31,Open Source,https://huggingface.co/openai/whisper-small
 openai/whisper-medium,1.2317899880866003,0.9995453025059232,1.1621165824123971,2025-12-14 13:25:49,Open Source,https://huggingface.co/openai/whisper-medium
