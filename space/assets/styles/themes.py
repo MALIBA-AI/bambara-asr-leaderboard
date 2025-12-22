@@ -23,9 +23,6 @@ header_html = f"""
     <p style="font-size: 18px; color: #7d3561; font-weight: 500; margin: 0;">
         Evaluating Automatic Speech Recognition for Bambara Language
     </p>
-    <p style="font-size: 14px; color: #666; margin-top: 15px; font-style: italic;">
-        A collaboration between <strong>MALIBA-AI</strong>, <strong>RobotsMali AI4D-LAB</strong>, and <strong>Djelia</strong>
-    </p>
 </div>
 """
 
