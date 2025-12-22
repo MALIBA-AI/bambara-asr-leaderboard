@@ -126,7 +126,7 @@ with gr.Blocks(theme=gr.themes.Default(), title="Bambara ASR Benchmark Leaderboa
                 def refresh_leaderboard():
                     """Refresh leaderboard by pulling latest data."""
                     git_pull()
-                    leaderboard = create_main_leaderboard(70, 30)
+                    leaderboard = create_main_leaderboard(50, 50)
                     return df_to_html(leaderboard)
                 
                 update_ranking_btn.click(
@@ -302,7 +302,7 @@ with gr.Blocks(theme=gr.themes.Default(), title="Bambara ASR Benchmark Leaderboa
             
                 def process_submission_wrapper(model_name, csv_file, license_type, model_url):
                     result_msg, result_html = process_submission(model_name, csv_file, references, license_type, model_url)
-                    main_lb_html = df_to_html(create_main_leaderboard(70, 30))
+                    main_lb_html = df_to_html(create_main_leaderboard(50, 50))
                     return result_msg, result_html, main_lb_html
                 
                 submit_btn.click(
@@ -418,3 +418,5 @@ with gr.Blocks(theme=gr.themes.Default(), title="Bambara ASR Benchmark Leaderboa
 if __name__ == "__main__":
     demo.queue(default_concurrency_limit=1)
     demo.launch(share=True)
+
+
