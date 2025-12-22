@@ -272,10 +272,22 @@ div[class*="gradio-container"] .prose td:first-child {
     padding-left: 24px !important;
 }
 
-/* Medal + Rank in first column */
+
+/* First column: Rank + Model Name (with medals) */
 div[class*="gradio-container"] .prose td:first-child {
-    font-size: 15px !important;
-    line-height: 1.4 !important;
+    font-size: 14.5px !important;
+    line-height: 1.2 !important;     
+    padding: 10px 12px !important;
+    vertical-align: middle !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;                       
+}
+
+/* Ensure medals don't stretch the row */
+div[class*="gradio-container"] .prose td:first-child .emoji {
+    font-size: 18px !important;
+    flex-shrink: 0;
 }
 
 /* ============================================
