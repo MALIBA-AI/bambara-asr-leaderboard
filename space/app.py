@@ -93,7 +93,7 @@ with gr.Blocks(theme=gr.themes.Default(), title="Bambara ASR Benchmark Leaderboa
                     wer_weight_slider = gr.Slider(
                         minimum=0,
                         maximum=100,
-                        value=70,
+                        value=50,
                         step=5,
                         label="WER Weight (%)",
                         info="Weight for Word Error Rate"
@@ -101,14 +101,14 @@ with gr.Blocks(theme=gr.themes.Default(), title="Bambara ASR Benchmark Leaderboa
                     cer_weight_slider = gr.Slider(
                         minimum=0,
                         maximum=100,
-                        value=30,
+                        value=50,
                         step=5,
                         label="CER Weight (%)",
                         info="Weight for Character Error Rate"
                     )
                 
                 weight_description = gr.Markdown(
-                    value=get_weight_description(70, 30),
+                    value=get_weight_description(50, 50),
                     elem_classes="weight-description"
                 )
                 
