@@ -416,4 +416,7 @@ with gr.Blocks(theme=gr.themes.Default(), title="Bambara ASR Benchmark Leaderboa
     )
 
 if __name__ == "__main__":
+    demo.queue(
+        default_concurrency_limit=1,  # 1 at a time
+    )
     demo.launch(share=True)
