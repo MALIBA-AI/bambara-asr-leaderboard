@@ -209,7 +209,7 @@ button.svelte-1tcem6n.svelte-1tcem6n:hover {
 }
 
 /* ============================================
-   TABLE STYLING - COMPACT & CLEAN
+   TABLE STYLING - TIGHT & PROFESSIONAL (LIKE YOUR SCREENSHOT)
    ============================================ */
 div[class*="gradio-container"] .prose table {
     width: 100% !important;
@@ -232,7 +232,7 @@ div[class*="gradio-container"] .prose th {
     font-size: 13.5px !important;
     text-transform: uppercase !important;
     letter-spacing: 0.6px !important;
-    padding: 14px 12px !important;     /* Slightly reduced from 16px */
+    padding: 14px 12px !important;
     border: none !important;
     text-align: center !important;
 }
@@ -245,7 +245,6 @@ div[class*="gradio-container"] .prose th:first-child {
 div[class*="gradio-container"] .prose tbody tr {
     border-bottom: 1px solid #e9ecef !important;
     transition: background-color 0.2s ease !important;
-    height: 48px !important;           /* Enforces consistent row height */
 }
 
 div[class*="gradio-container"] .prose tbody tr:hover {
@@ -257,12 +256,13 @@ div[class*="gradio-container"] .prose tbody tr:last-child {
 }
 
 div[class*="gradio-container"] .prose td {
-    padding: 10px 12px !important;     /* Reduced from 14px → 10px (main fix) */
+    padding: 9px 12px !important;           /* Tight vertical padding */
     color: #212529 !important;
     font-size: 14px !important;
     border: none !important;
     text-align: center !important;
-    vertical-align: middle !important; /* Better alignment */
+    vertical-align: middle !important;
+    line-height: 1.3 !important;
 }
 
 div[class*="gradio-container"] .prose td:first-child {
@@ -270,34 +270,33 @@ div[class*="gradio-container"] .prose td:first-child {
     color: #2f3b7d !important;
     text-align: left !important;
     padding-left: 24px !important;
+    font-size: 14.2px !important;
+    line-height: 1.3 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;                   /* Space between medal/rank and name */
 }
 
-
-/* First column: Rank + Model Name (with medals) */
-div[class*="gradio-container"] .prose td:first-child {
-    font-size: 14.5px !important;
-    line-height: 1.2 !important;     
-    padding: 10px 12px !important;
-    vertical-align: middle !important;
-    display: flex;
-    align-items: center;
-    gap: 8px;                       
-}
-
-/* Ensure medals don't stretch the row */
+/* Make medals slightly larger but controlled */
 div[class*="gradio-container"] .prose td:first-child .emoji {
-    font-size: 18px !important;
+    font-size: 19px !important;
     flex-shrink: 0;
+    margin-top: -2px;                       /* Fine-tune vertical alignment */
 }
-
 /* ============================================
    SPECIFIC TABLE COLUMN WIDTHS
    ============================================ */
 
-/* Main leaderboard */
+
+/* Main leaderboard - First column (Rank + Model Name) */
 div[class*="gradio-container"] .prose th:first-child,
 div[class*="gradio-container"] .prose td:first-child {
-    min-width: 350px !important;
+    width: 30% !important;          
+    min-width: 240px !important;     
+    max-width: 400px !important;     
+    white-space: nowrap !important;  
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
 }
 
 /* Model-specific table */
