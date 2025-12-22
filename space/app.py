@@ -393,7 +393,7 @@ with gr.Blocks(theme=gr.themes.Default(), title="Bambara ASR Benchmark Leaderboa
                   author       = {{MALIBA-AI Team} and {RobotsMali AI4D-LAB} and {Djelia}},
                   year         = {2025},
                   howpublished = {Hugging Face Dataset and Public Leaderboard},
-                  note         = {\url{https://huggingface.co/datasets/MALIBA-AI/bambara-speech-recognition-leaderboard}}
+                  note         = {url{https://huggingface.co/datasets/MALIBA-AI/bambara-speech-recognition-leaderboard}}
                 }
             ```
 
