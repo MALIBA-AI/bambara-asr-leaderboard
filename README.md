@@ -51,5 +51,3 @@ Welcome contributions!
 ## License
 
 MIT License. See [LICENSE](LICENSE).
-
-*Last updated: November 24, 2025*
