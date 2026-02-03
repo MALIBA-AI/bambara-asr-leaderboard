@@ -1,5 +1,5 @@
 Model_Name,WER,CER,Combined_Score,timestamp,License,Model_URL
-maliba-asr-v3-merged,0.45730294334104443,0.13447397423334317,0.36045425260873404,2025-12-23 13:59:12,Open Source,https://huggingface.co/sudoping01/maliba-asr-v3-exp-merged
+sudoping01/maliba-asr-v3-merged,0.45730294334104443,0.13447397423334317,0.36045425260873404,2025-12-23 13:59:12,Open Source,https://huggingface.co/sudoping01/maliba-asr-v3-exp-merged
 djelia/asr-v2,0.475041920233161,0.13563343206932,0.3732193737840086,2025-12-13 21:20:03,Proprietary,
 RobotsMali/soloba-ctc-0.6b-v3,0.4676263655336252,0.1602219769098022,0.3754050489464782,2025-12-15 11:56:46,Open Source,https://huggingface.co/RobotsMali/soloba-ctc-0.6b-v3
 djelia/asr-v1,0.4856333307102457,0.1300139362043154,0.3789475123584666,2025-12-13 21:19:09,Proprietary,
@@ -16,13 +16,13 @@ sudoping01/bambara-asr-v2,0.6032985461720093,0.1746372267625773,0.47470015034917
 meta/omniASR_LLM_7B,0.6257300344174835,0.1507940903304443,0.4832492511913717,2025-12-17 19:04:59,Open Source,https://huggingface.co/facebook
 MALIBA-AI/bambara-asr-v1,0.6173653208382153,0.1790366372384802,0.4858667157582947,2025-12-13 22:22:44,Open Source,https://huggingface.co/MALIBA-AI/bambara-asr-v1
 MALIBA-AI/bambara-asr-v2,0.6173653208382153,0.1790366372384802,0.4858667157582947,2025-12-14 03:25:54,Open Source,https://huggingface.co/MALIBA-AI/bambara-asr-v2
-Panga-Azazia-bambara-asr-v1.1-0,0.6039162206667842,0.2259740375061008,0.4905335657185791,2025-12-15 12:04:02,Proprietary,https://huggingface.co/Panga-Azazia/bambara-asr-v1.1
+Panga-Azazia/bambara-asr-v1.1-0,0.6039162206667842,0.2259740375061008,0.4905335657185791,2025-12-15 12:04:02,Proprietary,https://huggingface.co/Panga-Azazia/bambara-asr-v1.1
 djelia/bm-whisper-large-v2-lora-merged,0.5917100170996933,0.2585270226019403,0.4917551187503673,2025-12-19 19:00:03,Proprietary,https://huggingface.co/djelia/bm-whisper-large-v2-lora-merged
 meta/omniASR_LLM_300M,0.6332217814271919,0.1732499500414837,0.4952302320114794,2025-12-17 19:07:11,Open Source,https://huggingface.co/facebook
 RobotsMali/soloni-114m-tdt-ctc-v1,0.6113608146453282,0.2769386766060071,0.5110341732335318,2025-12-13 22:50:28,Open Source,https://huggingface.co/RobotsMali/soloni-114m-tdt-ctc-v1
 RobotsMali/stt-bm-quartznet15x5-v2,0.6566144780117574,0.1897525711037545,0.5165559059393565,2025-12-13 22:43:12,Open Source,https://huggingface.co/RobotsMali/stt-bm-quartznet15x5-v2
 RobotsMali/soloba-ctc-0.6b-v0,0.6293194324844291,0.3047668458335033,0.5319536564891514,2025-12-15 11:54:55,Open Source,https://huggingface.co/RobotsMali/soloba-ctc-0.6b-v0
-Panga-Azazia-bambara-asr-ngram,0.6912885800970985,0.1980131537634645,0.5433059521970083,2025-12-15 12:02:28,Open Source,https://huggingface.co/Panga-Azazia/bambara-asr
+Panga-Azazia/bambara-asr-ngram,0.6912885800970985,0.1980131537634645,0.5433059521970083,2025-12-15 12:02:28,Open Source,https://huggingface.co/Panga-Azazia/bambara-asr
 Panga-Azazia/bambara-asr,0.7000096634417643,0.2038557546051904,0.5511634907907921,2025-12-13 22:15:17,Open Source,https://huggingface.co/Panga-Azazia/bambara-asr
 meta/omniASR_CTC_1B_v2,0.6961654503008587,0.2193095840654943,0.5531086904302494,2025-12-17 19:00:16,Open Source,https://huggingface.co/facebook
 meta/omniASR_CTC_3B,0.726215668701008,0.2180168274141302,0.5737560163149447,2025-12-17 19:02:53,Open Source,https://huggingface.co/facebook
