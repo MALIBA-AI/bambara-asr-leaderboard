@@ -57,7 +57,7 @@ with gr.Blocks(theme=gr.themes.Default(), title="Bambara ASR Benchmark Leaderboa
         gr.Button("Dataset Repository", link="https://huggingface.co/datasets/MALIBA-AI/bambara-speech-recognition-leaderboard", elem_classes=['flat-navy-button'])
         gr.Button("GitHub Repo", link="https://github.com/MALIBA-AI/bambara-asr-leaderboard", elem_classes=['flat-navy-button'])
         gr.Button("Paper", link="#", elem_classes=['flat-navy-button'])
-        gr.Button("Tasks", link="#", elem_classes=['flat-navy-button'])
+        # gr.Button("Tasks", link="#", elem_classes=['flat-navy-button'])
     
     with gr.Group(elem_classes="content-card"):
         gr.Markdown("<br>")
@@ -378,6 +378,78 @@ with gr.Blocks(theme=gr.themes.Default(), title="Bambara ASR Benchmark Leaderboa
                     * **Error Calculation**: Uses the jiwer library for standard WER/CER computation
                     * **Quality Assurance**: Extreme outliers are capped to prevent result manipulation
                     * **Reproducibility**: All evaluation code is open-source and transparent
+                    """
+                )
+                
+            with gr.Tab("Task", id="task"):
+                gr.HTML("<br><br><center><h2>Task: Automatic Speech Recognition</h2></center><br>")
+                gr.Markdown(
+                    """
+                    ### What is ASR?
+
+                    Automatic Speech Recognition (ASR) is the task of converting spoken audio into written text. 
+                    Given an audio input, a model produces a transcription — a sequence of words representing what was said.
+
+                    ### Why Bambara?
+
+                    Bambara (Bamanankan) is the most widely spoken language in Mali with over 14 million speakers across West Africa. 
+                    Despite this, it remains severely underrepresented in speech technology. Most commercial ASR systems either do not 
+                    support Bambara at all or produce unusable output — as this benchmark demonstrates, with several major multilingual 
+                    models exceeding 100% Word Error Rate.
+
+                    ### What This Benchmark Measures
+
+                    Models are evaluated on a **formal, read-speech domain**: a studio recording of the Malian Constitution in 
+                    standard Bambara orthography, with no code-switching and near-perfect acoustic conditions.
+
+                    This is deliberately a **best-case scenario**. Real-world Bambara speech involves background noise, varying 
+                    accents, dialectal differences, and frequent French code-switching — all of which would increase error rates 
+                    beyond what is reported here.
+
+                    The benchmark tests two specific challenges:
+
+                    **1. Out-of-vocabulary handling** — ~75% of the vocabulary in this dataset does not appear in existing 
+                    Bambara ASR training corpora. Words like *yuruguyuruguli* (disorder/embezzlement) and *yamaruyasariya* 
+                    (ordinance/regulation) are central to legal text but absent from conversational data.
+
+                    **2. Morphological segmentation** — Bambara is agglutinative. Compound words like *kiritigɛfanga* 
+                    (judicial power) are frequently split by models into *kiritigɛ fanga*, producing correct characters but 
+                    wrong word boundaries. This explains the consistent gap between CER and WER across all evaluated models.
+
+                    ### Metrics
+
+                    | Metric | What it measures | How it's computed |
+                    |:---|:---|:---|
+                    | **WER** (Word Error Rate) | Word-level accuracy | (Substitutions + Insertions + Deletions) / Total reference words |
+                    | **CER** (Character Error Rate) | Character-level accuracy | Same formula applied at the character level |
+                    | **Combined Score** | Balanced ranking | Adjustable: default is 0.5 × WER + 0.5 × CER |
+
+                    Lower is better for all metrics. WER can exceed 100% when models hallucinate — generating more 
+                    tokens than exist in the reference.
+
+                    ### Production Readiness Context
+
+                    | Application | Typical WER needed | Current best on this benchmark |
+                    |:---|:---|:---|
+                    | Transcription services | < 10% | 47.50% |
+                    | Voice assistants | < 15% | 47.50% |
+                    | Captioning / accessibility | < 10% | 47.50% |
+                    | Voice-to-text input | < 5% | 47.50% |
+
+                    Current Bambara ASR is **30–40 percentage points** above production thresholds, even under ideal conditions.
+
+                    ### Key Findings from the Evaluation
+
+                    **37 models** were evaluated. The main takeaways:
+
+                    * **Bambara-specific fine-tunes dominate.** Small focused models (114M–600M parameters) consistently 
+                    outperform massive multilingual systems, confirming that targeted development beats scale for low-resource languages.
+                    * **Multilingual pre-training does not transfer.** All OpenAI Whisper variants and NVIDIA models (not trained 
+                    on Bambara) exceed 100% WER — performing worse than producing no output at all.
+                    * **Scale does not compensate for data scarcity.** Meta's 7B CTC model (74.65% WER) underperforms their 
+                    300M LLM variant (63.32% WER), which itself trails a 114M monolingual model (48.32% WER).
+                    * **Phonetics are easier than words.** Best CER is 13.00% vs. best WER of 46.76%, reflecting the 
+                    morphological complexity of Bambara.
                     """
                 )
 
