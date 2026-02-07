@@ -13,7 +13,7 @@ All evaluations run against the [**Bambara ASR Benchmark**](https://huggingface.
 | | |
 |:--|:--|
 | Language | Bambara (bm) |
-| Domain | Malian Constitution — legal/formal register |
+| Domain | Malian Constitution legal/formal register |
 | Duration | 1.075 hours, 518 segments |
 | Speaker | 1 adult male (main), 1 female (national anthem) |
 | Vocabulary | 1,198 unique words, ~75% absent from existing training corpora |
