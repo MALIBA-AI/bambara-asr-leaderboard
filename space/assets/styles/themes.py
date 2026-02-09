@@ -21,7 +21,7 @@ header_html = f"""
         Bambara ASR Leaderboard
     </h1>
     <p style="font-size: 18px; color: #7d3561; font-weight: 500; margin: 0;">
-        Evaluating Automatic Speech Recognition for Bambara Language
+        Where Are We at with Automatic Speech Recognition for the Bambara Language ?
     </p>
 </div>
 """
