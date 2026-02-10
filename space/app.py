@@ -342,7 +342,7 @@ with gr.Blocks(theme=gr.themes.Default(), title="Bambara ASR Benchmark Leaderboa
                     * Particularly useful for morphologically rich languages like Bambara
                 
                     **Combined Score**
-                    * Default weighted combination: 70% WER + 30% CER
+                    * Default weighted combination: 50% WER + 50% CER
                     * **NEW:** You can now customize the weights in the Main Leaderboard tab!
                     * Set your own preference (e.g., 100% WER + 0% CER if you only care about WER)
                     * Provides flexible evaluation based on your specific needs
