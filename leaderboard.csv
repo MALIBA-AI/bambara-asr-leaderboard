@@ -14,11 +14,11 @@ RobotsMali/soloni-114m-tdt-ctc-v0,0.5579166588585013,0.2265314265117959,0.458501
 RobotsMali/soloba-ctc-0.6b-v1,0.5759480097921998,0.2081144692642037,0.465597947633801,2025-12-15 11:55:46,Open Source,https://huggingface.co/RobotsMali/soloba-ctc-0.6b-v1
 facebook/mms-1b-all,0.6105655999290758,0.1470527002906157,0.4715117300375377,2025-12-13 21:21:07,Open Source,https://huggingface.co/facebook/mms-1b-all
 sudoping01/bambara-asr-v2,0.6032985461720093,0.1746372267625773,0.4747001503491797,2025-12-13 22:17:21,Open Source,https://huggingface.co/sudoping01/bambara-asr-v2
-bambara_stt,0.5822969475748957,0.2520624029150684,0.4832265841769475,2026-04-28 16:34:34,Proprietary,
 meta/omniASR_LLM_7B,0.6257300344174835,0.1507940903304443,0.4832492511913717,2025-12-17 19:04:59,Open Source,https://huggingface.co/facebook
-MALIBA-AI/bambara-asr-v2,0.6173653208382153,0.1790366372384802,0.4858667157582947,2025-12-14 03:25:54,Open Source,https://huggingface.co/MALIBA-AI/bambara-asr-v2
 MALIBA-AI/bambara-asr-v1,0.6173653208382153,0.1790366372384802,0.4858667157582947,2025-12-13 22:22:44,Open Source,https://huggingface.co/MALIBA-AI/bambara-asr-v1
+MALIBA-AI/bambara-asr-v2,0.6173653208382153,0.1790366372384802,0.4858667157582947,2025-12-14 03:25:54,Open Source,https://huggingface.co/MALIBA-AI/bambara-asr-v2
 Panga-Azazia/bambara-asr-v1.1-0,0.6039162206667842,0.2259740375061008,0.4905335657185791,2025-12-15 12:04:02,Proprietary,https://huggingface.co/Panga-Azazia/bambara-asr-v1.1
+bambara_stt,0.5954706101942742,0.2489362963672034,0.4915103160461529,2026-04-28 16:42:43,Proprietary,
 djelia/bm-whisper-large-v2-lora-merged,0.5917100170996933,0.2585270226019403,0.4917551187503673,2025-12-19 19:00:03,Proprietary,https://huggingface.co/djelia/bm-whisper-large-v2-lora-merged
 meta/omniASR_LLM_300M,0.6332217814271919,0.1732499500414837,0.4952302320114794,2025-12-17 19:07:11,Open Source,https://huggingface.co/facebook
 RobotsMali/soloni-114m-tdt-ctc-v1,0.6113608146453282,0.2769386766060071,0.5110341732335318,2025-12-13 22:50:28,Open Source,https://huggingface.co/RobotsMali/soloni-114m-tdt-ctc-v1
