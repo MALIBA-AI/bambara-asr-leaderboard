@@ -23,6 +23,7 @@ sudoping01/bambara-asr-v2,0.6032985461720093,0.1746372267625773,0.47470015034917
 meta/omniASR_LLM_7B,0.6257300344174835,0.1507940903304443,0.4832492511913717,2025-12-17 19:04:59,Open Source,https://huggingface.co/facebook
 MALIBA-AI/bambara-asr-v1,0.6173653208382153,0.1790366372384802,0.4858667157582947,2025-12-13 22:22:44,Open Source,https://huggingface.co/MALIBA-AI/bambara-asr-v1
 MALIBA-AI/bambara-asr-v2,0.6173653208382153,0.1790366372384802,0.4858667157582947,2025-12-14 03:25:54,Open Source,https://huggingface.co/MALIBA-AI/bambara-asr-v2
+Diomande/nko-v8-A-frozen-whisper-ctc,0.6259019440415415,0.16043317455565695,0.48626131319577615,2026-10-20 14:08:51,Proprietary,
 Panga-Azazia/bambara-asr-v1.1-0,0.6039162206667842,0.2259740375061008,0.4905335657185791,2025-12-15 12:04:02,Proprietary,https://huggingface.co/Panga-Azazia/bambara-asr-v1.1
 djelia/bm-whisper-large-v2-lora-merged,0.5917100170996933,0.2585270226019403,0.4917551187503673,2025-12-19 19:00:03,Proprietary,https://huggingface.co/djelia/bm-whisper-large-v2-lora-merged
 meta/omniASR_LLM_300M,0.6332217814271919,0.1732499500414837,0.4952302320114794,2025-12-17 19:07:11,Open Source,https://huggingface.co/facebook
